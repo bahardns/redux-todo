@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux'
      const [input,setInput] = useState('')
      const dispatch=useDispatch()
      const  addToDo = () => {
-    console.log(`Adding ${input}`)
+     console.log(`Adding ${input}`)
     dispatch(saveToDo({
       item:input,
       done:false,

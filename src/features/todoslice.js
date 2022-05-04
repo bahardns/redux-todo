@@ -7,10 +7,26 @@ todoList:[]
 const todoslice = createSlice({
   name: 'todos',
   initialState,
-  reducers: {saveToDo:(state,actions)=>
-    state.todoList.push(actions.payload)
+  reducers: {
+    saveToDo:(state,action)=>{
+    state.todoList.push(action.payload)
+},
+setCheck:(state,action)=>{
+  state.todoList.map((item=>{
+    if (action.payload===item.id)
+      if (item.done===true){
+        item.done=false
+   }
+            else
+            {
+              item.done=true
+            }
+    }
+  )
+  )}
 }
 });
 
-export const {saveToDo} = todoslice.actions
+export const {saveToDo,setCheck} = todoslice.actions
+export const selectToDoList = state => state.todos.todoList
 export default todoslice.reducer
